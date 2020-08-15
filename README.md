@@ -6,7 +6,7 @@
 Service name  | URL
 ------------- | -------------
 User-Service  | api/user/auth/login
-User-Service  | api/user/auth/login
+User-Service  | api/user/auth/register
 ------------
 ## Discovery-Service
 Eureka server which discover all other service and register it.
