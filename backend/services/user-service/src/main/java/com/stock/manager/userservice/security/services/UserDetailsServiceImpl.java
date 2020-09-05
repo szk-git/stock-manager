@@ -1,6 +1,7 @@
 package com.stock.manager.userservice.security.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -11,6 +12,7 @@ import com.stock.manager.userservice.models.User;
 import com.stock.manager.userservice.repository.UserRepository;
 
 @Service
+@Order(1)
 public class UserDetailsServiceImpl implements UserDetailsService {
 	@Autowired
 	UserRepository userRepository;
@@ -24,4 +26,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		return UserDetailsImpl.build(user);
 	}
 
+	public User loadUserById(Long id) {
+		User user = userRepository.findById(id)
+				.orElseThrow(() -> new UsernameNotFoundException("User Not Found with id: " + id));
+		return user;
+	}
 }
