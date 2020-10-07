@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import './NotFound.css';
 import { Link } from 'react-router-dom';
-import { Button } from 'antd';
+
+import './NotFound.css';
 
 class NotFound extends Component {
     render() {
@@ -13,7 +13,9 @@ class NotFound extends Component {
                 <div className="desc">
                     The Page you're looking for was not found.
                 </div>
-                <Link to="/"><Button className="go-back-btn" type="primary" size="large">Go Back</Button></Link>
+                <Link to="/">
+                  <button type="button" class="btn btn-danger">Go back</button>
+                </Link>
             </div>
         );
     }

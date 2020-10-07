@@ -14,7 +14,6 @@ import NotFound from "../common/NotFound";
 class App extends Component {
   constructor(props) {
     super(props);
-    this.logOut = this.logOut.bind(this);
 
     this.state = {
       showModeratorBoard: false,
@@ -35,7 +34,7 @@ class App extends Component {
     }
   }
 
-  logOut() {
+  logOut = () => {
     AuthService.logout();
   }
 
@@ -49,12 +48,20 @@ class App extends Component {
             <Link to={"/"} className="navbar-brand">
               Stock-Manager
             </Link>
+
             <div className="navbar-nav mr-auto">
               <li className="nav-item">
                 <Link to={"/home"} className="nav-link">
                   Home
                 </Link>
               </li>
+              {showAdminBoard && (
+                <li className="nav-item">
+                  <Link to={"/admin"} className="nav-link">
+                    Admin Board
+                  </Link>
+                </li>
+              )}
             </div>
 
             {currentUser ? (
@@ -70,7 +77,7 @@ class App extends Component {
                   </a>
                 </li>
               </div>
-            ) : (
+              ) : (
               <div className="navbar-nav ml-auto">
                 <li className="nav-item">
                   <Link to={"/login"} className="nav-link">

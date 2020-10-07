@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import {API_BASE_URL, ACCESS_TOKEN} from '../constants/index';
+import {API_BASE_URL, ACCESS_TOKEN} from '../common/constants';
 
 const request = (options) => {
   const headers = new Headers({

@@ -9,15 +9,23 @@ export default class Profile extends Component {
     this.state = {
       redirect: null,
       userReady: false,
-      currentUser: { username: "" }
+      currentUser: null
     };
   }
 
   componentDidMount() {
     const currentUser = AuthService.getCurrentUser();
 
-    if (!currentUser) this.setState({ redirect: "/home" });
-    this.setState({ currentUser: currentUser, userReady: true })
+    if (!currentUser){
+      this.setState({
+        redirect: "/home"
+      });
+    }else{
+      this.setState({
+        currentUser: currentUser,
+        userReady: true
+      });
+    }
   }
 
   render() {
@@ -25,7 +33,7 @@ export default class Profile extends Component {
       return <Redirect to={this.state.redirect} />
     }
 
-    const { currentUser } = this.state;
+    const currentUser = this.state.currentUser;
 
     return (
       <div className="container">
@@ -52,7 +60,8 @@ export default class Profile extends Component {
         <strong>Authorities:</strong>
         <ul>
           {currentUser.roles &&
-            currentUser.roles.map((role, index) => <li key={index}>{role}</li>)}
+            currentUser.roles.map((role, index) => <li key={index}>{role}</li>
+          )}
         </ul>
       </div>: null}
       </div>
