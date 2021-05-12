@@ -15,7 +15,7 @@
 		<java.version>14</java.version>
 		<spring-cloud.version>Hoxton.SR6</spring-cloud.version>
 		<springframework-boot>2.3.3.RELEASE</springframework-boot>
-		<springframework-security>5.3.4.RELEASE</springframework-security>
+		<springframework-security>5.3.9.RELEASE</springframework-security>
 	</properties>
 
 	<dependencies>
